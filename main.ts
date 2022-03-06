@@ -11,9 +11,8 @@ const DATA = [
 ["Chloe","070332432"],
 ["Ethan","075278452"],
 ["Grace","078952211"],
-["Grace","078952211"]
 ]
 
 var phoneBook = new PhoneBook;
 DATA.forEach(contact => phoneBook.addContact(contact[0],contact[1]))
-console.log(phoneBook.contactsByName("Grace"));
+console.log(phoneBook.contactsByNumber("077"));

@@ -19,18 +19,20 @@ export class PhoneBook implements IPhoneBook {
         }
     }
     contactsByNumber(number: string): Contact[] {
-        return this.phoneBook.filter(contact => {
+        var contactsByNumber : Contact[];
+        contactsByNumber = this.phoneBook.filter(contact => {
             if(contact.number.includes(number)){
                 return true;
             }
-        })
+        });
+        return this.sortAlphabetically(contactsByNumber);
     }
     contactsByName(name: string): Contact[] {
         return this.phoneBook.filter(contact => {
             if(contact.name === name){
                 return true;
             }
-        })
+        });
     }
 
     numberAlreadyExists(number: string): boolean {
@@ -41,5 +43,16 @@ export class PhoneBook implements IPhoneBook {
             }
         });
         return duplicateNumber;
+    }
+
+    sortAlphabetically(contacts: Contact[]) : Contact[]{
+        return contacts.sort((a,b) => {
+            if(a.name > b.name){
+                return 1;
+            }if(a.name < b.name){
+                return -1;
+            }
+            return 0;
+        });
     }
 }
